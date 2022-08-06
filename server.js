@@ -8,6 +8,16 @@ const {shuffleArray} = require('./utils')
 app.use(express.json())
 app.use(cors())
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'))
+})
+app.get('/styles', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.css'))
+})
+app.get('/js', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.js'))
+})
+
 // include and initialize the rollbar library with your access token
 var Rollbar = require('rollbar')
 var rollbar = new Rollbar({
@@ -21,13 +31,13 @@ rollbar.log('Hello world!')
 
 app.get('/', (req, res) => {
     rollbar.info('Someone opened your html')
-    res.sendFile(path.join(__dirname, '/public/index.html'))
+    res.sendFile(path.join(__dirname, './public/index.html'))
 })
-app.get('/css', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/index.css'))
+app.get('/styles', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.css'))
 })
 app.get('/js', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/index.js'))
+    res.sendFile(path.join(__dirname, './public/index.js'))
 })
 
 app.get('/api/robots', (req, res) => {

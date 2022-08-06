@@ -7,8 +7,13 @@ describe('shuffleArray should', () => {
         expect(array).toBe(shuffleArray)
     })
 
-    test('Check that all items are the same in array', () => {
-        let array = shuffleArray
-        expect(array).toEqual(shuffleArray)
+    test('return same length array as given', () => {
+        let array = [1, 2, 3, 4, 5]
+        let originalLength = array.length
+
+        let shuffledArray = shuffleArray(array)
+        let shuffleLength = shuffledArray.length
+
+        expect(shuffleLength).toEqual(originalLength)
     })
 })
